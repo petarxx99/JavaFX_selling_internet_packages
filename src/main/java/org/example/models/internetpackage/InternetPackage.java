@@ -36,6 +36,9 @@ public class InternetPackage{
 
     private long id;
     public long getId(){return id;}
+    public LocalDate getContractExpirationDate(){
+        return contractSignignDate.toLocalDate().plusMonths(getContractDurationInMonths());
+    }
 
     public int getContractDurationInMonths() {
         return contractDurationInMonths.get();
@@ -236,10 +239,15 @@ public class InternetPackage{
     public ObservableList<InternetPackage> getSavedPackages(){
         ObservableList<InternetPackage> savedPackages = FXCollections.<InternetPackage>observableArrayList();
         final String SQL = String.format("SELECT * FROM %s;", tableName);
+        return getPackagesFromDatabase(SQL);
+    }
+
+    private ObservableList<InternetPackage> getPackagesFromDatabase(String sqlQuery){
+        ObservableList<InternetPackage> savedPackages = FXCollections.<InternetPackage>observableArrayList();
 
         try(Connection connection = DriverManager.getConnection(stringForMySQLConnection)){
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(SQL);
+            ResultSet resultSet = statement.executeQuery(sqlQuery);
             while(resultSet.next()){
                 InternetPackage internetPackage = new InternetPackage();
                 internetPackage.id = resultSet.getLong(1);
