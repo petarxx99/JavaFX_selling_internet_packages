@@ -280,7 +280,7 @@ public class InternetPackage{
     }
 
 
-    public ObservableList<InternetPackage> getInternetPackagesLikeThisOne(){
+    public ObservableList<InternetPackage> getSavedInternetPackagesWhoseDataMatchesWithThisOnesData(){
         final String SQL = String.format("SELECT * FROM %s WHERE %s;", tableName, getMatchingConditionsForDatabase());
 
         return getPackagesFromDatabase(SQL);

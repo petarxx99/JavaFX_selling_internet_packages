@@ -22,19 +22,17 @@ version 0.0.6
  */
 public class App extends Application {
 
-
     @Override
     public void start(Stage stage) throws IOException {
         URL urlFXMLfajla = this.getClass().getClassLoader().getResource("main.fxml");
         VBox koren = FXMLLoader.<VBox>load(urlFXMLfajla);
+
         final double SCREEN_HEIGHT = Screen.getPrimary().getVisualBounds().getHeight() * 2 / 3.0;
         Scene scene = new Scene(koren, SCREEN_HEIGHT, SCREEN_HEIGHT);
         scene.getStylesheets().add("main.css");
         stage.setScene(scene);
         stage.show();
     }
-
-
 
 
     public static void main(String[] args) {

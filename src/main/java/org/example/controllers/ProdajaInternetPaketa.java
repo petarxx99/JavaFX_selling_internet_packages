@@ -159,7 +159,7 @@ public class ProdajaInternetPaketa {
     @FXML
     private void queryPackages(){
         root.setVisible(false);
-        ObservableList<InternetPackage> savedPackages = internetPackage.getInternetPackagesLikeThisOne();
+        ObservableList<InternetPackage> savedPackages = internetPackage.getSavedInternetPackagesWhoseDataMatchesWithThisOnesData();
 
         if(Util.listIsNullOrHasNoElements(savedPackages)){
             showErrorMessage("There are no saved packages that correspond to the data that you have inputed into this window.");
