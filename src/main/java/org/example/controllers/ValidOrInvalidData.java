@@ -12,5 +12,6 @@ public class ValidOrInvalidData {
     }
     
     public boolean isValid(){return isValid;}
+    public boolean isntValid(){return !isValid;}
     public String getMessageWhyDataIsInvalid(){return whyDataIsntValid;}
 }

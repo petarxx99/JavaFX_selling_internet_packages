@@ -108,13 +108,15 @@ public class ProdajaInternetPaketa {
 
     @FXML
     private void deletePackage() {
-        long id = -1;
         try{
-            id = Long.parseLong(idToDelete.getText());
+            long id = Long.parseLong(idToDelete.getText());
+            boolean deletedSuccessfully = internetPackage.deleteSavedPackage(id);
+            showMessageBasedOnACondition(deletedSuccessfully,
+                    "Package has been deleted. Deleted id: " + id,
+                    "There was a problem while deleting the package with id: " + id);
         } catch(NumberFormatException exception){
             showErrorMessage("You didn't enter valid id to delete.");
         }
-        internetPackage.deleteSavedPackage(id);
     }
 
     @FXML
@@ -135,11 +137,15 @@ public class ProdajaInternetPaketa {
         root.setVisible(false);
 
         ValidOrInvalidData data = internetPackage.isValid();
-        if(data.isValid()){
-            internetPackage.save();
-        } else {
+        if(data.isntValid()){
             showErrorMessage(data.getMessageWhyDataIsInvalid());
+        } else {
+            boolean savingSuccessful = internetPackage.save();
+            showMessageBasedOnACondition(savingSuccessful,
+                    "Internet package has been successfully saved.",
+                    "There was a problem while saving the package.");
         }
+
         root.setVisible(true);
     }
 
@@ -219,5 +225,23 @@ public class ProdajaInternetPaketa {
         alert.show();
     }
 
+    private void showMessage(String message){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setContentText(message);
+        alert.show();
+    }
+
+    private void showConfirmMessage(String message){
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setContentText(message);
+        alert.show();
+    }
+    private void showMessageBasedOnACondition(boolean condition, String messageIfTrue, String messageIfFalse){
+        if(condition){
+            showConfirmMessage(messageIfTrue);
+        } else {
+            showErrorMessage(messageIfFalse);
+        }
+    }
 
 }
