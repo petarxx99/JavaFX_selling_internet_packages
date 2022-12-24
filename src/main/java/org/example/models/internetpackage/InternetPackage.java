@@ -3,7 +3,7 @@ package org.example.models.internetpackage;
 import javafx.beans.property.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import org.example.controllers.ValidOrInvalidData;
+import org.example.ValidOrInvalidData;
 import org.example.util.Util;
 
 import java.sql.*;
