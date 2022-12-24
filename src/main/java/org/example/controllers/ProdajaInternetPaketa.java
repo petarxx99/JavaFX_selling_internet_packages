@@ -200,7 +200,7 @@ public class ProdajaInternetPaketa {
                 internetPackage.getAddress(),
                 internetPackage.getInternetSpeedInMegabytesPerSecond() + "MBPS",
                 internetPackage.getBandwidth().getBandwidthWithMeasurementUnit(),
-                internetPackage.getContractDurationInMonths() / 12.0 + "years",
+                internetPackage.getContractDurationInMonths() / 12.0 + " years",
                 internetPackage.timeLeftBeforeContractExpiresToString());
     }
 
