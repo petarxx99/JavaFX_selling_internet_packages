@@ -199,7 +199,7 @@ public class ProdajaInternetPaketa {
                 internetPackage.getLastName(),
                 internetPackage.getAddress(),
                 internetPackage.getInternetSpeedInMegabytesPerSecond() + "MBPS",
-                internetPackage.getBandwidth().numberOfGygabytes() + "GB",
+                internetPackage.getBandwidth().getBandwidthWithMeasurementUnit(),
                 internetPackage.getContractDurationInMonths() / 12.0 + "years",
                 internetPackage.timeLeftBeforeContractExpiresToString());
     }

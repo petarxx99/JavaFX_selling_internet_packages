@@ -7,4 +7,9 @@ public enum Bandwidth {
         if(this.equals(FLAT)) return FLAT.toString();
         return this.toString().substring("GB".length());
     }
+
+    public String getBandwidthWithMeasurementUnit(){
+        if(this.equals(FLAT)) return FLAT.toString();
+        return this.toString().substring("GB".length()) + " GB";
+    }
 }
