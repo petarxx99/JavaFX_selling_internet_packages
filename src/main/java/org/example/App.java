@@ -29,7 +29,7 @@ public class App extends Application {
         VBox koren = FXMLLoader.<VBox>load(urlFXMLfajla);
         final double SCREEN_HEIGHT = Screen.getPrimary().getVisualBounds().getHeight() * 2 / 3.0;
         Scene scene = new Scene(koren, SCREEN_HEIGHT, SCREEN_HEIGHT);
-        //   scene.getStylesheets().add("main.css");
+        scene.getStylesheets().add("main.css");
         stage.setScene(scene);
         stage.show();
     }
