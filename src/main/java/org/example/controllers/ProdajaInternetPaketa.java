@@ -159,6 +159,20 @@ public class ProdajaInternetPaketa {
     }
 
 
+    @FXML
+    private void queryPackages(){
+        root.setVisible(false);
+        ObservableList<InternetPackage> savedPackages = internetPackage.getInternetPackagesLikeThisOne();
+
+        if(Util.listIsNullOrHasNoElements(savedPackages)){
+            showErrorMessage("There are no saved packages that correspond to the data that you have inputed into this window.");
+        } else {
+            showSavedPackages(savedPackages);
+        }
+        root.setVisible(true);
+
+    }
+
     private double toMegabytesPerSecond(ToggleButton clickedButton){
         final String BUTTON_ID = clickedButton.getId();
         final String SPEED_IN_MBPS_AS_STRING = BUTTON_ID.substring("MBPS".length());

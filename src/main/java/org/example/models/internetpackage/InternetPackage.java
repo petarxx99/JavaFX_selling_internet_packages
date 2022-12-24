@@ -280,4 +280,43 @@ public class InternetPackage{
     }
 
 
+    public ObservableList<InternetPackage> getInternetPackagesLikeThisOne(){
+        final String SQL = String.format("SELECT * FROM %s WHERE %s;", tableName, getMatchingConditionsForDatabase());
+
+        return getPackagesFromDatabase(SQL);
+    }
+
+    private String getMatchingConditionsForDatabase(){
+        ArrayList<String> conditions = new ArrayList<String>();
+        if(!getFirstName().isBlank()){
+            conditions.add("first_name='" + getFirstName() + "'");
+        }
+        if(!getLastName().isBlank()){
+            conditions.add("last_name='" + getLastName() + "'");
+        }
+        if(!getAddress().isBlank()){
+            conditions.add("address='" + getAddress() + "'");
+        }
+        if(getInternetSpeedInMegabytesPerSecond() != INVALID_INTERNET_SPEED){
+            conditions.add("internet_speed_in_megabytes_per_second=" + getInternetSpeedInMegabytesPerSecond());
+        }
+        if(getBandwidth() != null){
+            conditions.add("bandwidth='" + getBandwidth() + "'");
+        }
+        if(getContractDurationInMonths() != INVALID_CONTRACT_DURATION){
+            conditions.add("contract_duration_in_months=" + getContractDurationInMonths());
+        }
+        return joinConditions(conditions);
+    }
+    private String joinConditions(ArrayList<String> conditions){
+        if(conditions.size() == 0) return "1=1";
+
+        StringBuilder sb = new StringBuilder();
+        sb.append(conditions.get(0));
+        for(int i=1; i<conditions.size(); i++){
+            sb.append(" AND " + conditions.get(i));
+        }
+        return sb.toString();
+    }
+
 }

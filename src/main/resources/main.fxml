@@ -85,6 +85,7 @@
                 <Button fx:id="clearButton" text="clear form" onAction="#clearForm" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
 
                 <Button fx:id="seeSavedPackages" text="show saved packages" onAction="#seeSavedPackages" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                <Button fx:id="seePackagesThatCorrespondToInputData" text="Show saved packages that match the data that you have entered" onAction="#queryPackages" GridPane.columnIndex="0" GridPane.rowIndex="3" GridPane.columnSpan="3"/>
             </children>
         </GridPane>
         <FlowPane>
