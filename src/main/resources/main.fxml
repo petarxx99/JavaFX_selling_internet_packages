@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+
+
+<!-- Kod <Button deo onAction="#paOvdeIdeNazivMetode"
+  Kod <VBox ili kojeg kod drugog root elementa pisem fx:controller="Klasa kontrolera"
+  labelaOgledalo kopira tekst iz prvaLabela. #{prvaLabela.text} je vrednost text polja objekta prvaLabela-->
+
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.FlowPane?>
+<VBox xmlns="http://javafx.com/javafx"
+      fx:controller="org.example.controllers.ProdajaInternetPaketa"
+      fx:id="root"
+      xmlns:fx="http://javafx.com/fxml">
+    <children>
+
+        <GridPane>
+        <children>
+            <Label text="First name" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+            <TextField fx:id="firstName" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+            <Label text="Last name" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+            <TextField fx:id="lastName" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+            <Label text="Address" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+            <TextField fx:id="address" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+        </children>
+        </GridPane>
+        <GridPane>
+            <children>
+                <Label text="Choose internet speed in megabytes per second." GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="6"/>
+
+                <ToggleButton fx:id="MBPS2" text="2" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                    <toggleGroup>
+                        <ToggleGroup fx:id="internetSpeed"/>
+                    </toggleGroup>
+                </ToggleButton>
+                <ToggleButton fx:id="MBPS5" text="5" toggleGroup="$internetSpeed" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                <ToggleButton fx:id="MBPS10" text="10" toggleGroup="$internetSpeed" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+                <ToggleButton fx:id="MBPS20" text="20" toggleGroup="$internetSpeed" GridPane.columnIndex="3" GridPane.rowIndex="1"/>
+                <ToggleButton fx:id="MBPS50" text="50" toggleGroup="$internetSpeed" GridPane.columnIndex="4" GridPane.rowIndex="1"/>
+                <ToggleButton fx:id="MBPS100" text="100" toggleGroup="$internetSpeed" GridPane.columnIndex="5" GridPane.rowIndex="1"/>
+
+            </children>
+        </GridPane>
+        <GridPane>
+            <children>
+                <Label text="Bandwidth in gigabytes" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="6"/>
+
+                <ToggleButton fx:id="GB1" text="1" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                    <toggleGroup>
+                        <ToggleGroup fx:id="bandwidth"/>
+                    </toggleGroup>
+                </ToggleButton>
+                <ToggleButton fx:id="GB2" text="2" toggleGroup="$bandwidth" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                <ToggleButton fx:id="GB5" text="5" toggleGroup="$bandwidth" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+                <ToggleButton fx:id="GB10" text="10" toggleGroup="$bandwidth" GridPane.columnIndex="3" GridPane.rowIndex="1"/>
+                <ToggleButton fx:id="GB100" text="100" toggleGroup="$bandwidth" GridPane.columnIndex="4" GridPane.rowIndex="1"/>
+                <ToggleButton fx:id="FLAT" text="FLAT" toggleGroup="$bandwidth" GridPane.columnIndex="6" GridPane.rowIndex="1"/>
+
+            </children>
+        </GridPane>
+        <GridPane>
+            <children>
+                <Label text="Duration in years" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="2"/>
+
+                <ToggleButton fx:id="durationInMonths12" text="1" toggleGroup="$contractDuration" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                    <toggleGroup>
+                        <ToggleGroup fx:id="contractDuration"/>
+                    </toggleGroup>
+                </ToggleButton>
+                <ToggleButton fx:id="durationInMonths24" text="2" toggleGroup="$contractDuration" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+            </children>
+        </GridPane>
+        <GridPane>
+            <children>
+                <Button fx:id="saveButton" text="save package" onAction="#savePackage" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                <Button fx:id="clearButton" text="clear form" onAction="#clearForm" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+
+                <Button fx:id="seeSavedPackages" text="show saved packages" onAction="#seeSavedPackages" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+            </children>
+        </GridPane>
+        <FlowPane>
+            <children>
+                <Label text="id of the package to delete: "/>
+                <TextField fx:id="idToDelete" />
+                <Button fx:id="deleteTableRowButton" text="delete package" onAction="#deletePackage"/>
+            </children>
+        </FlowPane>
+    </children>
+</VBox>

@@ -1,0 +1,15 @@
+CREATE SCHEMA db_javafx_assignment;
+
+  CREATE TABLE internet_packages (
+  id int primary key auto_increment,
+   first_name varchar(50),
+   last_name varchar(50),
+    address varchar(100),
+    internet_speed_in_megabytes_per_second float,
+    bandwidth varchar(50),
+    contract_duration_in_months smallint,
+    contract_signign_date date);
+
+CREATE USER 'assignment_user'@'localhost' IDENTIFIED BY 'password';
+
+GRANT ALL ON db_javafx_assignment.* TO 'assignment_user'@'localhost';
