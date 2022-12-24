@@ -237,7 +237,6 @@ public class InternetPackage{
 
 
     public ObservableList<InternetPackage> getSavedPackages(){
-        ObservableList<InternetPackage> savedPackages = FXCollections.<InternetPackage>observableArrayList();
         final String SQL = String.format("SELECT * FROM %s;", tableName);
         return getPackagesFromDatabase(SQL);
     }
