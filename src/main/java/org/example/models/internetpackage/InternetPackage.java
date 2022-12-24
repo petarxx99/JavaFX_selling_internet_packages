@@ -155,11 +155,15 @@ public class InternetPackage{
             return "Contract has already expired.";
         }
         return String.format("Contract expires in %s, %s, %s.",
-                timeLeft.getYears() +  addSforMultiple(timeLeft.getYears(), " year"),
-                timeLeft.getMonths() + addSforMultiple(timeLeft.getMonths(), " month"),
-                timeLeft.getDays()) + addSforMultiple(timeLeft.getDays(), " day");
+                timeLeft.getYears() +  " year" + getLetterSifQuantityIsMultiple(timeLeft.getYears()),
+                timeLeft.getMonths() + " month" + getLetterSifQuantityIsMultiple(timeLeft.getMonths()),
+                timeLeft.getDays() + " day" + getLetterSifQuantityIsMultiple(timeLeft.getDays()));
     }
 
+    private String getLetterSifQuantityIsMultiple(int quantity){
+        if(quantity == 1) return "";
+        return "s";
+    }
     private String addSforMultiple(int quantity, String word){
         if(quantity==1){
             return word;
