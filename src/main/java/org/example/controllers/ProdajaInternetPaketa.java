@@ -22,8 +22,6 @@ import java.util.*;
 public class ProdajaInternetPaketa {
 
     InternetPackage internetPackage;
-    ObservableList<InternetPackage> internetPackages = FXCollections.<InternetPackage>observableArrayList();
-
     @FXML
     private Parent root;
     @FXML
@@ -35,7 +33,7 @@ public class ProdajaInternetPaketa {
     @FXML
     private ToggleButton MBPS2, MBPS5, MBPS10, MBPS20, MBPS50, MBPS100,
     GB1, GB2, GB5, GB10, GB100, FLAT,
-    durationInMonths12, durationInMonths24;
+    durationInMonths12, durationInMonths24, seePackagesThatCorrespondToInputData;
 
     @FXML
     private Button saveButton, clearButton, deleteTableRowButton;
