@@ -157,7 +157,7 @@ public class ProdajaInternetPaketa {
 
 
     @FXML
-    private void queryPackages(){
+    private void showSavedPackagesThatMatchGUIinputData(){
         root.setVisible(false);
         ObservableList<InternetPackage> savedPackages = internetPackage.getSavedInternetPackagesWhoseDataMatchesWithThisOnesData();
 
