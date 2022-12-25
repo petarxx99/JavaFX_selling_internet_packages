@@ -11,6 +11,7 @@ import java.sql.*;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class InternetPackage{
@@ -33,8 +34,13 @@ public class InternetPackage{
     private final ObjectProperty<Bandwidth> bandwidth = new SimpleObjectProperty<>(null);
     private final IntegerProperty contractDurationInMonths = new SimpleIntegerProperty(INVALID_CONTRACT_DURATION);
     private Date contractSignignDate;
-
     private long id;
+
+    private static final String firstNameDB = "first_name", lastNameDB = "last_name", addressDB="address",
+    internetSpeedInMegabytesPerSecondDB="internet_speed_in_megabytes_per_second",
+    bandwidthDB="bandwidth", contractDurationInMonthsDB="contract_duration_in_months",
+    contractSignignDateDB="contract_signign_date";
+
     public long getId(){return id;}
     public LocalDate getContractExpirationDate(){
         return contractSignignDate.toLocalDate().plusMonths(getContractDurationInMonths());
@@ -212,8 +218,9 @@ public class InternetPackage{
     private String createSQLforSaving(){
         StringBuilder sql = new StringBuilder(String.format("INSERT INTO %s ", tableName));
 
-        sql.append("(first_name, last_name, address, internet_speed_in_megabytes_per_second," +
-                "bandwidth, contract_duration_in_months, contract_signign_date)");
+        sql.append(String.format("(%s, %s, %s, %s, %s, %s, %s)",
+                firstNameDB, lastNameDB, addressDB, internetSpeedInMegabytesPerSecondDB,
+                bandwidthDB, contractDurationInMonthsDB, contractSignignDateDB));
 
         Date today = Date.valueOf(LocalDate.now());
         sql.append(String.format(" VALUES ('%s', '%s', '%s', %s, '%s', %s, '%s');",
@@ -289,22 +296,22 @@ public class InternetPackage{
     private String getMatchingConditionsForDatabase(){
         ArrayList<String> conditions = new ArrayList<String>();
         if(!getFirstName().isBlank()){
-            conditions.add("first_name='" + getFirstName() + "'");
+            conditions.add(firstNameDB +"='" + getFirstName() + "'");
         }
         if(!getLastName().isBlank()){
-            conditions.add("last_name='" + getLastName() + "'");
+            conditions.add(lastNameDB + "='" + getLastName() + "'");
         }
         if(!getAddress().isBlank()){
-            conditions.add("address='" + getAddress() + "'");
+            conditions.add(addressDB+ "='" + getAddress() + "'");
         }
         if(getInternetSpeedInMegabytesPerSecond() != INVALID_INTERNET_SPEED){
-            conditions.add("internet_speed_in_megabytes_per_second=" + getInternetSpeedInMegabytesPerSecond());
+            conditions.add(internetSpeedInMegabytesPerSecondDB +"=" + getInternetSpeedInMegabytesPerSecond());
         }
         if(getBandwidth() != null){
-            conditions.add("bandwidth='" + getBandwidth() + "'");
+            conditions.add(bandwidthDB +"'" + getBandwidth() + "'");
         }
         if(getContractDurationInMonths() != INVALID_CONTRACT_DURATION){
-            conditions.add("contract_duration_in_months=" + getContractDurationInMonths());
+            conditions.add(contractSignignDateDB + "=" + getContractDurationInMonths());
         }
         return joinConditions(conditions);
     }

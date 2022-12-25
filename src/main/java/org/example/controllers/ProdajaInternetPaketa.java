@@ -189,7 +189,6 @@ public class ProdajaInternetPaketa {
         ScrollPane scrollPane = new ScrollPane();
         scrollPane.setContent(gridPane);
         scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
-        scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
         scrollPane.setFitToWidth(true);
 
         gridPane.setStyle("-fx-border-width: 3px; -fx-border-color: orange;");

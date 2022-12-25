@@ -2,9 +2,9 @@ CREATE SCHEMA db_javafx_assignment;
 
   CREATE TABLE internet_packages (
   id int primary key auto_increment,
-   first_name varchar(50),
-   last_name varchar(50),
-    address varchar(100),
+   first_name varchar(256),
+   last_name varchar(256),
+    address varchar(256),
     internet_speed_in_megabytes_per_second float,
     bandwidth varchar(50),
     contract_duration_in_months smallint,
