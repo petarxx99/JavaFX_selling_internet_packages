@@ -68,7 +68,7 @@
         </GridPane>
         <GridPane>
             <children>
-                <Label text="Duration in years" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="2"/>
+                <Label text="Contract duration in years" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="2"/>
 
                 <ToggleButton fx:id="durationInMonths12" text="1" toggleGroup="$contractDuration" GridPane.columnIndex="0" GridPane.rowIndex="1">
                     <toggleGroup>
