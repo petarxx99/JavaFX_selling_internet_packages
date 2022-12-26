@@ -308,7 +308,7 @@ public class InternetPackage{
             conditions.add(internetSpeedInMegabytesPerSecondDB +"=" + getInternetSpeedInMegabytesPerSecond());
         }
         if(getBandwidth() != null){
-            conditions.add(bandwidthDB +"'" + getBandwidth() + "'");
+            conditions.add(bandwidthDB + "='" + getBandwidth() + "'");
         }
         if(getContractDurationInMonths() != INVALID_CONTRACT_DURATION){
             conditions.add(contractSignignDateDB + "=" + getContractDurationInMonths());
